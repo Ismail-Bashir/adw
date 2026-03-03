@@ -1,5 +1,7 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   Code2,
@@ -9,86 +11,93 @@ import {
   Quote,
   Layers,
   FileStack,
-  Users,
 } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "Remote Design",
-  description:
-    "Enable efficient, off-site design work with tools that streamline communication, ensure consistency, and keep projects moving.",
-};
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function RemoteDesignPage() {
   return (
     <>
       <section className="relative bg-gradient-to-br from-foreground via-[#1e293b] to-[#0f172a] text-white py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
+          <motion.div className="max-w-3xl" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <Link href="/services" className="inline-flex items-center gap-1 text-sm text-white/50 hover:text-white/80 transition-colors mb-6">
               Services<span className="mx-1">/</span>
             </Link>
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.1] mb-6">Remote Design</h1>
             <p className="text-lg text-white/70 leading-relaxed max-w-2xl">
-              Enable efficient, off-site design work with tools that streamline communication, ensure consistency, and keep projects moving — no matter where your team is.
+              Enable efficient, off-site design work with tools that streamline communication, ensure consistency, and keep projects moving.
             </p>
-          </div>
+          </motion.div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
       </section>
 
       <section className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-16">
-            <p className="text-sm font-semibold uppercase tracking-wider text-accent mb-3">Our Work</p>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-4">Remote-First Solutions</h2>
-            <p className="text-lg text-muted leading-relaxed">
-              Discover how we&apos;ve enabled teams to work seamlessly across locations — from automating off-site workflows to delivering tools that support efficient, remote collaboration.
-            </p>
-          </div>
+          <ScrollReveal>
+            <div className="max-w-2xl mb-16">
+              <p className="text-sm font-semibold uppercase tracking-wider text-cyan-600 mb-3">Our Work</p>
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-4">Remote-First Solutions</h2>
+              <p className="text-lg text-muted leading-relaxed">Discover how we&apos;ve enabled teams to work seamlessly across locations.</p>
+            </div>
+          </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="rounded-2xl bg-surface border border-border/50 overflow-hidden hover:shadow-xl hover:border-accent/20 transition-all">
-              <div className="h-48 bg-gradient-to-br from-accent/10 to-accent/5 flex items-center justify-center">
-                <Layers className="h-16 w-16 text-accent/30" />
-              </div>
-              <div className="p-8">
-                <h3 className="text-xl font-bold text-foreground mb-2">Layout Automation</h3>
-                <p className="text-muted leading-relaxed">Automated generation of multi-configuration kitchen layouts in SolidWorks with full parametric control.</p>
-              </div>
-            </div>
-            <div className="rounded-2xl bg-surface border border-border/50 overflow-hidden hover:shadow-xl hover:border-accent/20 transition-all">
-              <div className="h-48 bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-                <FileStack className="h-16 w-16 text-primary/30" />
-              </div>
-              <div className="p-8">
-                <h3 className="text-xl font-bold text-foreground mb-2">Stair Lifts</h3>
-                <p className="text-muted leading-relaxed">Parameter-driven lift components modeled with photogrammetry data for precise, real-world accuracy.</p>
-              </div>
-            </div>
+            {[
+              { icon: Layers, title: "Layout Automation", desc: "Automated generation of multi-configuration kitchen layouts in SolidWorks with full parametric control.", gradient: "from-cyan-500/10 to-cyan-500/5", color: "text-cyan-500/30" },
+              { icon: FileStack, title: "Stair Lifts", desc: "Parameter-driven lift components modeled with photogrammetry data for precise, real-world accuracy.", gradient: "from-blue-500/10 to-blue-500/5", color: "text-blue-500/30" },
+            ].map((item, i) => (
+              <ScrollReveal key={item.title} delay={i * 0.15} direction={i === 0 ? "left" : "right"}>
+                <motion.div
+                  className="rounded-2xl bg-white border border-gray-100 overflow-hidden"
+                  whileHover={{ y: -8, boxShadow: "0 25px 50px -12px rgba(6,182,212,0.12)" }}
+                >
+                  <div className={`h-48 bg-gradient-to-br ${item.gradient} flex items-center justify-center`}>
+                    <motion.div whileHover={{ rotate: 360, scale: 1.2 }} transition={{ duration: 0.8 }}>
+                      <item.icon className={`h-16 w-16 ${item.color}`} />
+                    </motion.div>
+                  </div>
+                  <div className="p-8">
+                    <h3 className="text-xl font-bold text-foreground mb-2">{item.title}</h3>
+                    <p className="text-muted leading-relaxed">{item.desc}</p>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
 
       <section className="py-24 sm:py-32 bg-surface">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-sm font-semibold uppercase tracking-wider text-accent mb-3">Capabilities</p>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-4">Built for Efficiency</h2>
-            <p className="text-lg text-muted leading-relaxed">Automate repetitive tasks and enhance consistency at every stage of your CAD workflow.</p>
-          </div>
+          <ScrollReveal>
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <p className="text-sm font-semibold uppercase tracking-wider text-cyan-600 mb-3">Capabilities</p>
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-4">Built for Efficiency</h2>
+            </div>
+          </ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: Code2, title: "Smart Scripts", desc: "Custom scripts that adapt to your CAD environment — minimize manual steps and eliminate errors." },
-              { icon: LayoutTemplate, title: "Template Library", desc: "A curated collection of parametric templates ready to drop into your projects and accelerate design." },
-              { icon: Settings2, title: "Rule-Based Configurations", desc: "Automate part and assembly logic using if/then rules and formulas — generate variants in seconds." },
-              { icon: FileOutput, title: "Automated Outputs", desc: "Instantly generate drawings, reports, and BOMs — directly within your CAD interface." },
-            ].map((f) => (
-              <div key={f.title} className="rounded-2xl bg-white p-8 border border-border/50 hover:shadow-lg hover:border-accent/20 transition-all">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent mb-5">
-                  <f.icon className="h-6 w-6" />
-                </div>
-                <h3 className="text-base font-bold text-foreground mb-2">{f.title}</h3>
-                <p className="text-sm text-muted leading-relaxed">{f.desc}</p>
-              </div>
+              { icon: Code2, title: "Smart Scripts", desc: "Custom scripts that adapt to your CAD environment — minimize manual steps and eliminate errors.", color: "#0891b2" },
+              { icon: LayoutTemplate, title: "Template Library", desc: "A curated collection of parametric templates ready to drop into your projects.", color: "#2563eb" },
+              { icon: Settings2, title: "Rule-Based Configurations", desc: "Automate part and assembly logic using if/then rules — generate variants in seconds.", color: "#7c3aed" },
+              { icon: FileOutput, title: "Automated Outputs", desc: "Instantly generate drawings, reports, and BOMs — directly within your CAD interface.", color: "#059669" },
+            ].map((f, i) => (
+              <ScrollReveal key={f.title} delay={i * 0.1}>
+                <motion.div
+                  className="rounded-2xl bg-white p-8 border border-gray-100 hover:border-cyan-200 transition-colors"
+                  whileHover={{ y: -8, boxShadow: "0 20px 40px -12px rgba(0,0,0,0.1)" }}
+                >
+                  <motion.div
+                    className="flex h-12 w-12 items-center justify-center rounded-xl mb-5"
+                    style={{ backgroundColor: `${f.color}15`, color: f.color }}
+                    whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+                  >
+                    <f.icon className="h-6 w-6" />
+                  </motion.div>
+                  <h3 className="text-base font-bold text-foreground mb-2">{f.title}</h3>
+                  <p className="text-sm text-muted leading-relaxed">{f.desc}</p>
+                </motion.div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -96,24 +105,28 @@ export default function RemoteDesignPage() {
 
       <section className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-sm font-semibold uppercase tracking-wider text-accent mb-3">Client Stories</p>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">What Our Clients Say</h2>
-          </div>
+          <ScrollReveal>
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <p className="text-sm font-semibold uppercase tracking-wider text-cyan-600 mb-3">Client Stories</p>
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">What Our Clients Say</h2>
+            </div>
+          </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { quote: "ADW's automation reduced our design time by over 60%. Their team understood our process and delivered solutions that scaled effortlessly.", name: "Engineering Lead", company: "Modular Stairs Inc." },
               { quote: "We used to spend hours building assemblies manually. ADW created a parametric workflow that does it in minutes.", name: "CAD Manager", company: "Elevate Systems" },
               { quote: "Reliable, precise, and fast. ADW has transformed how our team approaches design automation.", name: "Product Dev", company: "RailCraft" },
-            ].map((t) => (
-              <div key={t.company} className="rounded-2xl bg-surface p-8 border border-border/50">
-                <Quote className="h-8 w-8 text-accent/20 mb-4" />
-                <p className="text-muted leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
-                <div className="border-t border-border/50 pt-4">
-                  <p className="text-sm font-semibold text-foreground">{t.name}</p>
-                  <p className="text-xs text-muted">{t.company}</p>
-                </div>
-              </div>
+            ].map((t, i) => (
+              <ScrollReveal key={t.company} delay={i * 0.15}>
+                <motion.div className="rounded-2xl bg-surface p-8 border border-gray-100 h-full" whileHover={{ y: -5 }}>
+                  <Quote className="h-8 w-8 text-cyan-100 mb-4" />
+                  <p className="text-muted leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
+                  <div className="border-t border-gray-100 pt-4">
+                    <p className="text-sm font-semibold text-foreground">{t.name}</p>
+                    <p className="text-xs text-muted">{t.company}</p>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -121,11 +134,13 @@ export default function RemoteDesignPage() {
 
       <section className="py-24 sm:py-32 bg-surface">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-4">Ready to Transform Your CAD Workflow?</h2>
-          <p className="text-lg text-muted max-w-xl mx-auto mb-8">Let&apos;s connect your team with expert remote design capabilities.</p>
-          <Link href="/contact" className="inline-flex items-center gap-2 rounded-lg bg-accent px-8 py-3.5 text-sm font-semibold text-white shadow-lg hover:opacity-90 transition-all">
-            Contact Us <ArrowRight className="h-4 w-4" />
-          </Link>
+          <ScrollReveal>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-4">Ready to Transform Your CAD Workflow?</h2>
+            <p className="text-lg text-muted max-w-xl mx-auto mb-8">Let&apos;s connect your team with expert remote design capabilities.</p>
+            <Link href="/contact" className="group inline-flex items-center gap-2 rounded-lg bg-cyan-600 px-8 py-3.5 text-sm font-semibold text-white shadow-lg hover:bg-cyan-700 transition-all">
+              Contact Us <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </ScrollReveal>
         </div>
       </section>
     </>
