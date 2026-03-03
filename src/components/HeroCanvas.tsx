@@ -8,6 +8,8 @@ interface Point {
   vx: number;
   vy: number;
   radius: number;
+  pulse: number;
+  pulseSpeed: number;
 }
 
 export default function HeroCanvas() {
@@ -18,15 +20,17 @@ export default function HeroCanvas() {
   const [dimensions, setDimensions] = useState({ w: 0, h: 0 });
 
   const initPoints = useCallback((w: number, h: number) => {
-    const count = Math.floor((w * h) / 12000);
+    const count = Math.floor((w * h) / 9000);
     const pts: Point[] = [];
     for (let i = 0; i < count; i++) {
       pts.push({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.6,
-        vy: (Math.random() - 0.5) * 0.6,
-        radius: Math.random() * 2 + 1,
+        vx: (Math.random() - 0.5) * 0.7,
+        vy: (Math.random() - 0.5) * 0.7,
+        radius: Math.random() * 2 + 0.5,
+        pulse: Math.random() * Math.PI * 2,
+        pulseSpeed: 0.015 + Math.random() * 0.025,
       });
     }
     pointsRef.current = pts;
@@ -37,7 +41,6 @@ export default function HeroCanvas() {
     if (!canvas) return;
     const parent = canvas.parentElement;
     if (!parent) return;
-
     const resize = () => {
       const w = parent.clientWidth;
       const h = parent.clientHeight;
@@ -46,7 +49,6 @@ export default function HeroCanvas() {
       setDimensions({ w, h });
       initPoints(w, h);
     };
-
     resize();
     window.addEventListener("resize", resize);
     return () => window.removeEventListener("resize", resize);
@@ -57,10 +59,9 @@ export default function HeroCanvas() {
     if (!canvas || dimensions.w === 0) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-
     const { w, h } = dimensions;
-    const connectionDist = 120;
-    const mouseDist = 200;
+    const connectionDist = 130;
+    const mouseDist = 250;
 
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
@@ -71,16 +72,16 @@ export default function HeroCanvas() {
       for (const p of pts) {
         p.x += p.vx;
         p.y += p.vy;
+        p.pulse += p.pulseSpeed;
         if (p.x < 0 || p.x > w) p.vx *= -1;
         if (p.y < 0 || p.y > h) p.vy *= -1;
-
         const dxm = mx - p.x;
         const dym = my - p.y;
         const distMouse = Math.sqrt(dxm * dxm + dym * dym);
         if (distMouse < mouseDist) {
           const force = (mouseDist - distMouse) / mouseDist;
-          p.x -= (dxm / distMouse) * force * 2;
-          p.y -= (dym / distMouse) * force * 2;
+          p.x -= (dxm / distMouse) * force * 3;
+          p.y -= (dym / distMouse) * force * 3;
         }
       }
 
@@ -91,8 +92,13 @@ export default function HeroCanvas() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < connectionDist) {
             const opacity = 1 - dist / connectionDist;
-            ctx.strokeStyle = `rgba(59, 130, 246, ${opacity * 0.3})`;
-            ctx.lineWidth = 0.5;
+            const dxm1 = mx - pts[i].x;
+            const dym1 = my - pts[i].y;
+            const nearMouse = Math.sqrt(dxm1 * dxm1 + dym1 * dym1) < mouseDist;
+            ctx.strokeStyle = nearMouse
+              ? `rgba(212, 160, 23, ${opacity * 0.5})`
+              : `rgba(212, 160, 23, ${opacity * 0.08})`;
+            ctx.lineWidth = nearMouse ? 1 : 0.5;
             ctx.beginPath();
             ctx.moveTo(pts[i].x, pts[i].y);
             ctx.lineTo(pts[j].x, pts[j].y);
@@ -105,14 +111,25 @@ export default function HeroCanvas() {
         const dxm = mx - p.x;
         const dym = my - p.y;
         const distMouse = Math.sqrt(dxm * dxm + dym * dym);
-        const glow = distMouse < mouseDist ? 0.8 : 0.4;
+        const nearMouse = distMouse < mouseDist;
+        const pulseScale = 0.7 + Math.sin(p.pulse) * 0.3;
+        const r = p.radius * pulseScale * (nearMouse ? 2 : 1);
 
-        ctx.fillStyle = `rgba(59, 130, 246, ${glow})`;
+        if (nearMouse) {
+          const closeness = 1 - distMouse / mouseDist;
+          ctx.shadowColor = "rgba(212, 160, 23, 0.9)";
+          ctx.shadowBlur = 20 + closeness * 25;
+          ctx.fillStyle = `rgba(255, 215, 0, ${0.6 + closeness * 0.4})`;
+        } else {
+          ctx.shadowColor = "rgba(212, 160, 23, 0.3)";
+          ctx.shadowBlur = 4;
+          ctx.fillStyle = `rgba(212, 160, 23, ${0.15 + Math.sin(p.pulse) * 0.1})`;
+        }
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
         ctx.fill();
       }
-
+      ctx.shadowBlur = 0;
       animRef.current = requestAnimationFrame(draw);
     };
 
@@ -120,21 +137,14 @@ export default function HeroCanvas() {
     return () => cancelAnimationFrame(animRef.current);
   }, [dimensions]);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = canvasRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
-  };
-
-  const handleMouseLeave = () => {
-    mouseRef.current = { x: -1000, y: -1000 };
-  };
-
   return (
     <canvas
       ref={canvasRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onMouseMove={(e) => {
+        const rect = canvasRef.current?.getBoundingClientRect();
+        if (rect) mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+      }}
+      onMouseLeave={() => { mouseRef.current = { x: -1000, y: -1000 }; }}
       className="absolute inset-0 w-full h-full"
     />
   );

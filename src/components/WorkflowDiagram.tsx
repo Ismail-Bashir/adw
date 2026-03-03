@@ -6,10 +6,10 @@ import { useRef } from "react";
 import { FileInput, Cog, Cpu, FileOutput } from "lucide-react";
 
 const steps = [
-  { icon: FileInput, label: "Input", desc: "CAD files, specs & parameters", color: "#2563eb" },
-  { icon: Cog, label: "Configure", desc: "Rules, templates & logic", color: "#0891b2" },
-  { icon: Cpu, label: "Automate", desc: "Smart scripts process your design", color: "#7c3aed" },
-  { icon: FileOutput, label: "Output", desc: "Drawings, BOMs & production files", color: "#059669" },
+  { icon: FileInput, label: "Input", desc: "CAD files, specs & parameters", color: "#b8860b" },
+  { icon: Cog, label: "Configure", desc: "Rules, templates & logic", color: "#d4a017" },
+  { icon: Cpu, label: "Automate", desc: "Smart scripts process your design", color: "#f0c946" },
+  { icon: FileOutput, label: "Output", desc: "Drawings, BOMs & production files", color: "#e6b800" },
 ];
 
 export default function WorkflowDiagram() {
@@ -18,14 +18,13 @@ export default function WorkflowDiagram() {
 
   return (
     <div ref={ref} className="relative py-8">
-      {/* Connection line */}
       <div className="absolute top-1/2 left-0 right-0 hidden md:block">
         <motion.div
-          className="h-0.5 bg-gradient-to-r from-[#2563eb] via-[#7c3aed] to-[#059669] mx-16"
+          className="h-px mx-16"
           initial={{ scaleX: 0 }}
           animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
           transition={{ duration: 1.2, delay: 0.3, ease: "easeInOut" }}
-          style={{ transformOrigin: "left" }}
+          style={{ transformOrigin: "left", background: "linear-gradient(to right, #b8860b, #d4a017, #f0c946, #e6b800)" }}
         />
       </div>
 
@@ -39,29 +38,23 @@ export default function WorkflowDiagram() {
             transition={{ duration: 0.5, delay: 0.2 + i * 0.2 }}
           >
             <motion.div
-              className="relative z-10 flex h-20 w-20 items-center justify-center rounded-2xl bg-white shadow-lg border border-gray-100 mb-4 cursor-pointer"
+              className="relative z-10 flex h-20 w-20 items-center justify-center rounded-2xl bg-card border border-card-border mb-4 cursor-pointer shadow-lg"
               whileHover={{
                 scale: 1.15,
-                rotate: [0, -5, 5, 0],
-                boxShadow: `0 20px 40px ${step.color}25`,
+                rotate: 8,
+                boxShadow: `0 20px 40px ${step.color}20`,
+                borderColor: step.color,
               }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <step.icon className="h-8 w-8" style={{ color: step.color }} />
-              <motion.div
-                className="absolute -inset-1 rounded-2xl opacity-0"
-                style={{ border: `2px solid ${step.color}` }}
-                whileHover={{ opacity: 0.5, scale: 1.05 }}
-              />
             </motion.div>
-            <h3 className="text-base font-bold text-foreground mb-1">
-              {step.label}
-            </h3>
+            <h3 className="text-base font-bold text-foreground mb-1">{step.label}</h3>
             <p className="text-sm text-muted">{step.desc}</p>
 
             {i < steps.length - 1 && (
               <motion.div
-                className="md:hidden w-0.5 h-8 mt-4"
+                className="md:hidden w-px h-8 mt-4"
                 style={{ backgroundColor: step.color }}
                 initial={{ scaleY: 0 }}
                 animate={inView ? { scaleY: 1 } : { scaleY: 0 }}

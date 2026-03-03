@@ -7,42 +7,41 @@ import ScrollReveal from "@/components/ScrollReveal";
 export default function ContactPage() {
   return (
     <>
-      <section className="relative bg-gradient-to-br from-foreground via-[#1e293b] to-[#0f172a] text-white py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-navy text-white py-24 sm:py-32">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(212,160,23,0.05),transparent_60%)]" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
           <motion.div className="max-w-3xl" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <p className="text-sm font-semibold uppercase tracking-wider text-blue-400 mb-3">Contact</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-accent mb-3">Contact</p>
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.1] mb-6">Get in Touch</h1>
-            <p className="text-lg text-white/70 leading-relaxed max-w-2xl">
-              Whether you&apos;re looking to automate a process, launch a project, or just say hello — drop us a line.
-            </p>
+            <p className="text-lg text-white/50 leading-relaxed max-w-2xl">Whether you&apos;re looking to automate a process, launch a project, or just say hello — drop us a line.</p>
           </motion.div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
       </section>
 
       <section className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
             <ScrollReveal direction="left" className="lg:col-span-2">
-              <h2 className="text-2xl font-bold text-foreground mb-8">Send Us a Message</h2>
+              <h2 className="text-2xl font-bold text-white mb-8">Send Us a Message</h2>
               <form className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <motion.div whileFocus={{ scale: 1.01 }}>
-                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">Full Name</label>
-                    <input type="text" id="name" name="name" required className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-foreground placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all" placeholder="John Smith" />
-                  </motion.div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">Email Address</label>
-                    <input type="email" id="email" name="email" required className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-foreground placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all" placeholder="john@company.com" />
+                    <label htmlFor="name" className="block text-sm font-medium text-white/70 mb-2">Full Name</label>
+                    <input type="text" id="name" name="name" required className="w-full rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-white placeholder:text-muted-light focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all" placeholder="John Smith" />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-white/70 mb-2">Email Address</label>
+                    <input type="email" id="email" name="email" required className="w-full rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-white placeholder:text-muted-light focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all" placeholder="john@company.com" />
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">Company</label>
-                  <input type="text" id="company" name="company" className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-foreground placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all" placeholder="Your company name" />
+                  <label htmlFor="company" className="block text-sm font-medium text-white/70 mb-2">Company</label>
+                  <input type="text" id="company" name="company" className="w-full rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-white placeholder:text-muted-light focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all" placeholder="Your company name" />
                 </div>
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-foreground mb-2">Service Interested In</label>
-                  <select id="service" name="service" className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-foreground focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all">
+                  <label htmlFor="service" className="block text-sm font-medium text-white/70 mb-2">Service Interested In</label>
+                  <select id="service" name="service" className="w-full rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-white focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all">
                     <option value="">Select a service...</option>
                     <option value="cad-automation">CAD Automation</option>
                     <option value="remote-design">Remote Design</option>
@@ -51,63 +50,41 @@ export default function ContactPage() {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">Message</label>
-                  <textarea id="message" name="message" rows={5} required className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-foreground placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all resize-none" placeholder="Tell us about your project..." />
+                  <label htmlFor="message" className="block text-sm font-medium text-white/70 mb-2">Message</label>
+                  <textarea id="message" name="message" rows={5} required className="w-full rounded-lg border border-card-border bg-card px-4 py-3 text-sm text-white placeholder:text-muted-light focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all resize-none" placeholder="Tell us about your project..." />
                 </div>
-                <motion.button
-                  type="submit"
-                  className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 hover:bg-blue-700 transition-all"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Send className="h-4 w-4" />
-                  Send Message
+                <motion.button type="submit" className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-accent to-accent-light px-8 py-3.5 text-sm font-semibold text-navy shadow-lg shadow-accent/20 hover:brightness-110 transition-all" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <Send className="h-4 w-4" /> Send Message
                 </motion.button>
               </form>
             </ScrollReveal>
 
             <ScrollReveal direction="right" delay={0.2}>
-              <h2 className="text-2xl font-bold text-foreground mb-8">Contact Info</h2>
+              <h2 className="text-2xl font-bold text-white mb-8">Contact Info</h2>
               <div className="space-y-8">
                 {[
-                  { icon: Mail, title: "Email", detail: "contact@automateddesignworks.com", href: "mailto:contact@automateddesignworks.com" },
+                  { icon: Mail, title: "Email", detail: "info@automateddesignworks.com", href: "mailto:info@automateddesignworks.com" },
                   { icon: Clock, title: "Response Time", detail: "Within 24 hours", href: null },
                   { icon: MapPin, title: "Location", detail: "Remote-first team", href: null },
                 ].map((item, i) => (
-                  <motion.div
-                    key={item.title}
-                    className="flex gap-4"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 + i * 0.1 }}
-                  >
-                    <motion.div
-                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600"
-                      whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
-                    >
+                  <motion.div key={item.title} className="flex gap-4" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 + i * 0.1 }}>
+                    <motion.div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent" whileHover={{ rotate: 10, scale: 1.1 }}>
                       <item.icon className="h-5 w-5" />
                     </motion.div>
                     <div>
-                      <p className="text-sm font-semibold text-foreground">{item.title}</p>
-                      {item.href ? (
-                        <a href={item.href} className="text-sm text-muted hover:text-blue-600 transition-colors">{item.detail}</a>
-                      ) : (
-                        <p className="text-sm text-muted">{item.detail}</p>
-                      )}
+                      <p className="text-sm font-semibold text-white">{item.title}</p>
+                      {item.href ? <a href={item.href} className="text-sm text-muted hover:text-accent transition-colors">{item.detail}</a> : <p className="text-sm text-muted">{item.detail}</p>}
                     </div>
                   </motion.div>
                 ))}
               </div>
 
-              <motion.div
-                className="rounded-2xl bg-surface p-8 border border-gray-100 mt-10"
-                whileHover={{ y: -3 }}
-              >
-                <h3 className="text-base font-bold text-foreground mb-3">Why Work With Us?</h3>
+              <motion.div className="rounded-2xl bg-card p-8 border border-card-border mt-10" whileHover={{ y: -3, borderColor: "rgba(212,160,23,0.2)" }}>
+                <h3 className="text-base font-bold text-white mb-3">Why Work With Us?</h3>
                 <ul className="space-y-3">
                   {["Innovative, modern automation solutions", "User-first design philosophy", "On time, on budget delivery", "Transparent, collaborative process"].map((point) => (
                     <li key={point} className="flex items-start gap-2 text-sm text-muted">
-                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-600 shrink-0" />
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
                       {point}
                     </li>
                   ))}
