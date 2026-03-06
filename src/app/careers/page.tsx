@@ -18,8 +18,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 const perks = [
   {
     icon: MapPin,
-    title: "100% Remote",
-    text: "Work from anywhere — we're a distributed team across multiple time zones.",
+    title: "Hybrid",
+    text: "Flexible mix of remote and on-site work — collaborate in person when it matters, work from anywhere when it doesn't.",
   },
   {
     icon: Rocket,

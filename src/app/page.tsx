@@ -338,11 +338,11 @@ export default function Home() {
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { quote: "ADW's automation reduced our design time by over 60%. Their team understood our process and delivered solutions that scaled effortlessly.", name: "Engineering Lead", company: "Modular Stairs Inc." },
-              { quote: "We used to spend hours building assemblies manually. ADW created a parametric workflow that does it in minutes.", name: "CAD Manager", company: "Elevate Systems" },
-              { quote: "Reliable, precise, and fast. ADW has transformed how our team approaches design automation.", name: "Product Dev", company: "RailCraft" },
+              { quote: "ADW's automation reduced our design time by over 60%. Their team understood our process and delivered solutions that scaled effortlessly.", name: "Engineering Lead" },
+              { quote: "We used to spend hours building assemblies manually. ADW created a parametric workflow that does it in minutes.", name: "CAD Manager" },
+              { quote: "Reliable, precise, and fast. ADW has transformed how our team approaches design automation.", name: "Product Dev" },
             ].map((t, i) => (
-              <ScrollReveal key={t.company} delay={i * 0.15}>
+              <ScrollReveal key={t.name} delay={i * 0.15}>
                 <motion.div
                   className="relative rounded-2xl bg-card p-6 border border-card-border h-full group"
                   whileHover={{ y: -6, scale: 1.02 }}
@@ -354,7 +354,6 @@ export default function Home() {
                     <p className="text-white/70 leading-relaxed mb-5 text-sm">&ldquo;{t.quote}&rdquo;</p>
                     <div className="border-t border-card-border pt-3">
                       <p className="text-sm font-bold text-white">{t.name}</p>
-                      <p className="text-xs text-accent">{t.company}</p>
                     </div>
                   </div>
                 </motion.div>
