@@ -3,10 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
-  Briefcase,
   MapPin,
-  Clock,
-  ChevronRight,
   Users,
   Rocket,
   Heart,
@@ -17,41 +14,6 @@ import {
   Paperclip,
 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
-
-const openings = [
-  {
-    title: "SolidWorks Design Automation Engineer",
-    type: "Full-time",
-    location: "Remote",
-    description:
-      "Build and maintain parametric SolidWorks models, design tables, and macros that drive automated drawing generation for commercial kitchen and stair lift products.",
-    tags: ["SolidWorks", "VBA / API", "Design Tables", "3D Modeling"],
-  },
-  {
-    title: "CAD Drafter / Detailer",
-    type: "Full-time / Contract",
-    location: "Remote",
-    description:
-      "Produce production-ready 2D drawings from 3D models — including BOMs, section views, and GD&T annotations — under tight turnaround schedules.",
-    tags: ["2D Drafting", "GD&T", "BOMs", "SolidWorks"],
-  },
-  {
-    title: "Software Developer — Automation Tools",
-    type: "Full-time",
-    location: "Remote",
-    description:
-      "Develop internal tools and scripts (Python, C#, VBA) that integrate with SolidWorks and other CAD platforms to streamline engineering workflows.",
-    tags: ["Python", "C#", "SolidWorks API", "Automation"],
-  },
-  {
-    title: "Project Coordinator",
-    type: "Full-time",
-    location: "Remote",
-    description:
-      "Manage timelines, client communication, and deliverables across multiple concurrent design projects. Engineering background preferred.",
-    tags: ["Project Management", "Client Relations", "Engineering"],
-  },
-];
 
 const perks = [
   {
@@ -79,7 +41,6 @@ const perks = [
 type FormStatus = "idle" | "loading" | "success" | "error";
 
 export default function CareersPage() {
-  const [selectedPosition, setSelectedPosition] = useState("");
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -114,16 +75,10 @@ export default function CareersPage() {
 
       setStatus("success");
       form.reset();
-      setSelectedPosition("");
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Failed to submit");
     }
-  }
-
-  function scrollToForm(position: string) {
-    setSelectedPosition(position);
-    document.getElementById("apply-form")?.scrollIntoView({ behavior: "smooth" });
   }
 
   const inputClass =
@@ -192,81 +147,17 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 bg-surface">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <p className="text-sm font-semibold uppercase tracking-widest text-accent mb-2 text-center">
-              Open Positions
-            </p>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-10">
-              Current Openings
-            </h2>
-          </ScrollReveal>
-
-          <div className="space-y-4">
-            {openings.map((job, i) => (
-              <ScrollReveal key={job.title} delay={i * 0.08}>
-                <motion.div
-                  className="rounded-2xl border border-card-border bg-card p-6 group cursor-pointer"
-                  whileHover={{ borderColor: "rgba(14,165,233,0.3)" }}
-                  transition={{ duration: 0.25 }}
-                  onClick={() => scrollToForm(job.title)}
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <Briefcase className="h-4 w-4 text-accent" />
-                        <h3 className="text-base font-bold text-white">
-                          {job.title}
-                        </h3>
-                      </div>
-                      <p className="text-sm text-white/40 leading-relaxed mb-3">
-                        {job.description}
-                      </p>
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        {job.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="flex items-center gap-4 text-xs text-white/30">
-                        <span className="flex items-center gap-1">
-                          <Clock className="h-3 w-3" /> {job.type}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <MapPin className="h-3 w-3" /> {job.location}
-                        </span>
-                      </div>
-                    </div>
-                    <motion.div
-                      className="flex items-center gap-1 text-sm font-semibold text-accent group-hover:opacity-100 opacity-60 transition-opacity"
-                      whileHover={{ x: 4 }}
-                    >
-                      Apply <ChevronRight className="h-4 w-4" />
-                    </motion.div>
-                  </div>
-                </motion.div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="apply-form" className="py-16 sm:py-20">
+      <section id="apply-form" className="py-16 sm:py-20 bg-surface">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <p className="text-sm font-semibold uppercase tracking-widest text-accent mb-2 text-center">
-              Apply Now
+              Get In Touch
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-3">
               Send Us Your Application
             </h2>
             <p className="text-sm text-white/40 text-center mb-10 max-w-lg mx-auto">
-              Fill out the form below and we&apos;ll get back to you within 48 hours. Don&apos;t see your role? Apply anyway — we love talented people.
+              No open positions right now, but we&apos;re always looking for talented people. Send us your info and we&apos;ll reach out when the right opportunity comes up.
             </p>
           </ScrollReveal>
 
@@ -315,23 +206,20 @@ export default function CareersPage() {
                   </div>
                   <div>
                     <label htmlFor="apply-position" className="block text-sm font-medium text-white/70 mb-1.5">
-                      Position <span className="text-accent">*</span>
+                      Area of Interest <span className="text-accent">*</span>
                     </label>
                     <select
                       id="apply-position"
                       name="position"
                       required
-                      value={selectedPosition}
-                      onChange={(e) => setSelectedPosition(e.target.value)}
                       className={inputClass}
                     >
-                      <option value="">Select a position...</option>
-                      {openings.map((job) => (
-                        <option key={job.title} value={job.title}>
-                          {job.title}
-                        </option>
-                      ))}
-                      <option value="Other">Other / General Application</option>
+                      <option value="">Select an area...</option>
+                      <option value="CAD / Design Automation">CAD / Design Automation</option>
+                      <option value="Drafting / Detailing">Drafting / Detailing</option>
+                      <option value="Software Development">Software Development</option>
+                      <option value="Project Management">Project Management</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
                 </div>
@@ -345,7 +233,7 @@ export default function CareersPage() {
 
                 <div>
                   <label htmlFor="apply-message" className="block text-sm font-medium text-white/70 mb-1.5">
-                    Cover Letter / Tell Us About Yourself <span className="text-accent">*</span>
+                    Tell Us About Yourself <span className="text-accent">*</span>
                   </label>
                   <textarea
                     id="apply-message"
@@ -353,7 +241,7 @@ export default function CareersPage() {
                     rows={5}
                     required
                     className={`${inputClass} resize-none`}
-                    placeholder="Tell us about your experience, what excites you about this role, and any relevant projects you've worked on..."
+                    placeholder="Tell us about your experience, skills, and what kind of work excites you..."
                   />
                 </div>
 
