@@ -6,10 +6,10 @@ import { useRef } from "react";
 import { FileInput, Cog, Cpu, FileOutput } from "lucide-react";
 
 const steps = [
-  { icon: FileInput, label: "Input", desc: "CAD files, specs & parameters", color: "#b8860b" },
-  { icon: Cog, label: "Configure", desc: "Rules, templates & logic", color: "#d4a017" },
-  { icon: Cpu, label: "Automate", desc: "Smart scripts process your design", color: "#f0c946" },
-  { icon: FileOutput, label: "Output", desc: "Drawings, BOMs & production files", color: "#e6b800" },
+  { icon: FileInput, label: "Input", desc: "CAD files, specs & parameters", color: "#0284C7" },
+  { icon: Cog, label: "Configure", desc: "Rules, templates & logic", color: "#0EA5E9" },
+  { icon: Cpu, label: "Automate", desc: "Smart scripts process your design", color: "#38BDF8" },
+  { icon: FileOutput, label: "Output", desc: "Drawings, BOMs & production files", color: "#7DD3FC" },
 ];
 
 export default function WorkflowDiagram() {
@@ -24,7 +24,7 @@ export default function WorkflowDiagram() {
           initial={{ scaleX: 0 }}
           animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
           transition={{ duration: 1.2, delay: 0.3, ease: "easeInOut" }}
-          style={{ transformOrigin: "left", background: "linear-gradient(to right, #b8860b, #d4a017, #f0c946, #e6b800)" }}
+          style={{ transformOrigin: "left", background: "linear-gradient(to right, #0284C7, #0EA5E9, #38BDF8, #7DD3FC)" }}
         />
       </div>
 

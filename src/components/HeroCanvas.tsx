@@ -96,8 +96,8 @@ export default function HeroCanvas() {
             const dym1 = my - pts[i].y;
             const nearMouse = Math.sqrt(dxm1 * dxm1 + dym1 * dym1) < mouseDist;
             ctx.strokeStyle = nearMouse
-              ? `rgba(212, 160, 23, ${opacity * 0.5})`
-              : `rgba(212, 160, 23, ${opacity * 0.08})`;
+              ? `rgba(14, 165, 233, ${opacity * 0.5})`
+              : `rgba(14, 165, 233, ${opacity * 0.08})`;
             ctx.lineWidth = nearMouse ? 1 : 0.5;
             ctx.beginPath();
             ctx.moveTo(pts[i].x, pts[i].y);
@@ -117,13 +117,13 @@ export default function HeroCanvas() {
 
         if (nearMouse) {
           const closeness = 1 - distMouse / mouseDist;
-          ctx.shadowColor = "rgba(212, 160, 23, 0.9)";
+          ctx.shadowColor = "rgba(56, 189, 248, 0.9)";
           ctx.shadowBlur = 20 + closeness * 25;
-          ctx.fillStyle = `rgba(255, 215, 0, ${0.6 + closeness * 0.4})`;
+          ctx.fillStyle = `rgba(125, 211, 252, ${0.6 + closeness * 0.4})`;
         } else {
-          ctx.shadowColor = "rgba(212, 160, 23, 0.3)";
+          ctx.shadowColor = "rgba(14, 165, 233, 0.3)";
           ctx.shadowBlur = 4;
-          ctx.fillStyle = `rgba(212, 160, 23, ${0.15 + Math.sin(p.pulse) * 0.1})`;
+          ctx.fillStyle = `rgba(14, 165, 233, ${0.15 + Math.sin(p.pulse) * 0.1})`;
         }
         ctx.beginPath();
         ctx.arc(p.x, p.y, r, 0, Math.PI * 2);

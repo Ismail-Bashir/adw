@@ -3,11 +3,11 @@
 @theme inline {
   --color-background: #000000;
   --color-foreground: #f0f0f0;
-  --color-primary: #d4a017;
-  --color-primary-dark: #b8860b;
-  --color-primary-light: #f0c946;
-  --color-accent: #d4a017;
-  --color-accent-light: #f0c946;
+  --color-primary: #0EA5E9;
+  --color-primary-dark: #0284C7;
+  --color-primary-light: #38BDF8;
+  --color-accent: #0EA5E9;
+  --color-accent-light: #38BDF8;
   --color-muted: #6b7280;
   --color-muted-light: #3a3a3a;
   --color-border: #1a1a1a;
@@ -31,18 +31,18 @@ body {
 }
 
 ::selection {
-  background: rgba(212, 160, 23, 0.35);
+  background: rgba(14, 165, 233, 0.35);
   color: #fff;
 }
 
-.glow-gold {
-  box-shadow: 0 0 20px rgba(212, 160, 23, 0.3), 0 0 60px rgba(212, 160, 23, 0.1);
+.glow-blue {
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.3), 0 0 60px rgba(14, 165, 233, 0.1);
 }
-.glow-gold-lg {
-  box-shadow: 0 0 30px rgba(212, 160, 23, 0.4), 0 0 80px rgba(212, 160, 23, 0.15), 0 0 120px rgba(212, 160, 23, 0.05);
+.glow-blue-lg {
+  box-shadow: 0 0 30px rgba(14, 165, 233, 0.4), 0 0 80px rgba(14, 165, 233, 0.15), 0 0 120px rgba(14, 165, 233, 0.05);
 }
-.text-glow-gold {
-  text-shadow: 0 0 20px rgba(212, 160, 23, 0.5), 0 0 40px rgba(212, 160, 23, 0.2);
+.text-glow-blue {
+  text-shadow: 0 0 20px rgba(14, 165, 233, 0.5), 0 0 40px rgba(14, 165, 233, 0.2);
 }
 .text-glow-white {
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
@@ -82,8 +82,8 @@ body {
 .animate-float { animation: float 6s ease-in-out infinite; }
 .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
 
-.gold-shimmer {
-  background: linear-gradient(90deg, #b8860b, #d4a017, #ffd700, #f0c946, #d4a017, #b8860b);
+.blue-shimmer {
+  background: linear-gradient(90deg, #0284C7, #0EA5E9, #38BDF8, #7DD3FC, #38BDF8, #0EA5E9);
   background-size: 200% 100%;
   animation: shimmer 2.5s ease-in-out infinite;
   -webkit-background-clip: text;
@@ -91,11 +91,16 @@ body {
   background-clip: text;
 }
 
-.blue-shimmer {
-  background: linear-gradient(90deg, #d4a017, #f0c946, #ffd700, #f0c946, #d4a017);
+.light-shimmer {
+  background: linear-gradient(90deg, #38BDF8, #7DD3FC, #BAE6FD, #7DD3FC, #38BDF8);
   background-size: 200% 100%;
   animation: shimmer 3s ease-in-out infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+@keyframes kenburns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.15) translate(-2%, -1%); }
 }

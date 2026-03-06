@@ -13,11 +13,10 @@ interface Slide {
 }
 
 const slides: Slide[] = [
-  { src: "/tim-hortons.jpg", alt: "Kitchen Layout Automation", caption: "Kitchen Layout Automation", sub: "Multi-configuration layouts generated in SolidWorks" },
-  { src: "/bruno-stair.jpg", alt: "Stair Lift Design", caption: "Stair Lift Modeling", sub: "Parameter-driven components from photogrammetry data" },
-  { src: "/drawing-automation.jpg", alt: "Drawing Automation", caption: "Drawing Automation", sub: "Batch production files and manufacturing drawings" },
-  { src: "/automation.jpg", alt: "CAD Automation", caption: "CAD Automation", sub: "Intelligent workflows that eliminate repetitive tasks" },
-  { src: "/design.jpg", alt: "Design Solutions", caption: "Design Solutions", sub: "Custom parametric templates and smart scripts" },
+  { src: "/kitchen-layout-diagram.png", alt: "Kitchen Layout CAD Drawing", caption: "Kitchen Layout Automation", sub: "Multi-configuration commercial kitchen layouts generated in SolidWorks" },
+  { src: "/stairlift-diagram.png", alt: "Stair Lift CAD Drawing", caption: "Stair Lift Engineering", sub: "Parameter-driven rail systems with dimension-accurate technical drawings" },
+  { src: "/cabinet-assembly-diagram.png", alt: "Cabinet Assembly CAD", caption: "Parametric Cabinet Assemblies", sub: "Modular countertop and cabinet configurations driven by design tables" },
+  { src: "/batch-drawings-diagram.png", alt: "Batch Drawing Automation", caption: "Batch Drawing Automation", sub: "Automated production files — BOMs, section views, and title blocks" },
 ];
 
 export default function ImageCarousel() {
@@ -46,7 +45,7 @@ export default function ImageCarousel() {
   };
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl bg-card border border-card-border group">
+    <div className="relative w-full overflow-hidden group">
       {/* Image area */}
       <div className="relative aspect-[21/9] overflow-hidden">
         <AnimatePresence mode="wait" custom={direction}>
@@ -67,7 +66,7 @@ export default function ImageCarousel() {
               className="object-cover"
               priority={current === 0}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
           </motion.div>
         </AnimatePresence>
 
@@ -104,8 +103,8 @@ export default function ImageCarousel() {
         </button>
       </div>
 
-      {/* Progress dots + bar */}
-      <div className="flex items-center justify-center gap-2 py-4">
+      {/* Progress dots */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
         {slides.map((_, i) => (
           <button
             key={i}
