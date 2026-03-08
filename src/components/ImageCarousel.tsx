@@ -13,6 +13,8 @@ interface Slide {
 }
 
 const slides: Slide[] = [
+  { src: "/project-office.png", alt: "Hudson Yards Office Installation", caption: "Commercial Interior Design", sub: "Grid ceiling and millwork installations for premium commercial spaces" },
+  { src: "/project-counter.png", alt: "Restaurant Counter Design", caption: "Restaurant Counter Systems", sub: "Custom countertop and display case configurations for quick-service restaurants" },
   { src: "/kitchen-layout-diagram.png", alt: "Kitchen Layout CAD Drawing", caption: "Kitchen Layout Automation", sub: "Multi-configuration commercial kitchen layouts generated in SolidWorks" },
   { src: "/stairlift-diagram.png", alt: "Stair Lift CAD Drawing", caption: "Stair Lift Engineering", sub: "Parameter-driven rail systems with dimension-accurate technical drawings" },
   { src: "/cabinet-assembly-diagram.png", alt: "Cabinet Assembly CAD", caption: "Parametric Cabinet Assemblies", sub: "Modular countertop and cabinet configurations driven by design tables" },

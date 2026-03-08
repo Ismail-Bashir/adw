@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Code2, LayoutTemplate, Settings2, FileOutput, Quote, Layers, FileStack } from "lucide-react";
+import { ArrowRight, Code2, LayoutTemplate, Settings2, FileOutput, Layers, FileStack } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function RemoteDesignPage() {
@@ -55,26 +55,6 @@ export default function RemoteDesignPage() {
                 <motion.div className="rounded-2xl bg-card p-6 border border-card-border hover:border-accent/20 transition-colors" whileHover={{ y: -6, boxShadow: "0 20px 40px -12px rgba(0,0,0,0.3)" }}>
                   <motion.div className="flex h-11 w-11 items-center justify-center rounded-xl mb-4" style={{ backgroundColor: `${f.color}15`, color: f.color }} whileHover={{ rotate: 10, scale: 1.1 }}><f.icon className="h-5 w-5" /></motion.div>
                   <h3 className="text-sm font-bold text-white mb-1.5">{f.title}</h3><p className="text-xs text-muted leading-relaxed">{f.desc}</p>
-                </motion.div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal><div className="text-center max-w-2xl mx-auto mb-10"><p className="text-sm font-semibold uppercase tracking-widest text-accent mb-2">Client Stories</p><h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">What Our Clients Say</h2></div></ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { quote: "ADW's automation reduced our design time by over 60%. Their team understood our process and delivered solutions that scaled effortlessly.", name: "Engineering Lead", company: "Modular Stairs Inc." },
-              { quote: "We used to spend hours building assemblies manually. ADW created a parametric workflow that does it in minutes.", name: "CAD Manager", company: "Elevate Systems" },
-              { quote: "Reliable, precise, and fast. ADW has transformed how our team approaches design automation.", name: "Product Dev", company: "RailCraft" },
-            ].map((t, i) => (
-              <ScrollReveal key={t.company} delay={i * 0.15}>
-                <motion.div className="rounded-2xl bg-card p-6 border border-card-border h-full" whileHover={{ y: -4, borderColor: "rgba(14,165,233,0.2)" }}>
-                  <Quote className="h-7 w-7 text-accent/20 mb-3" /><p className="text-sm text-muted leading-relaxed mb-4">&ldquo;{t.quote}&rdquo;</p>
-                  <div className="border-t border-card-border pt-3"><p className="text-sm font-semibold text-white">{t.name}</p><p className="text-xs text-muted">{t.company}</p></div>
                 </motion.div>
               </ScrollReveal>
             ))}
