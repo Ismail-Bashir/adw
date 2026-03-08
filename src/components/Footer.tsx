@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 py-10 md:grid-cols-4">
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <Image src="/logo.jpg" alt="ADW Logo" width={36} height={36} className="rounded-lg" />
+              <Image src="/logo.png" alt="ADW Logo" width={36} height={36} className="rounded-lg" />
               <span className="text-lg font-bold tracking-tight text-white">Automated DesignWorks</span>
             </Link>
             <p className="text-sm leading-relaxed text-white/25 max-w-sm">

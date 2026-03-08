@@ -11,7 +11,6 @@ import {
   LayoutTemplate,
   Settings2,
   FileOutput,
-  Quote,
   ChevronRight,
   Users,
   Sparkles,
@@ -316,45 +315,6 @@ export default function Home() {
                     </motion.div>
                     <h3 className="text-base font-bold text-white mb-2">{feature.title}</h3>
                     <p className="text-sm text-muted leading-relaxed">{feature.desc}</p>
-                  </div>
-                </motion.div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="py-16 sm:py-20 relative overflow-hidden">
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[120px]" />
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
-          <ScrollReveal>
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-accent mb-3">Testimonials</p>
-              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">
-                What Our Clients Say
-              </h2>
-            </div>
-          </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { quote: "ADW's automation reduced our design time by over 60%. Their team understood our process and delivered solutions that scaled effortlessly.", name: "Engineering Lead" },
-              { quote: "We used to spend hours building assemblies manually. ADW created a parametric workflow that does it in minutes.", name: "CAD Manager" },
-              { quote: "Reliable, precise, and fast. ADW has transformed how our team approaches design automation.", name: "Product Dev" },
-            ].map((t, i) => (
-              <ScrollReveal key={t.name} delay={i * 0.15}>
-                <motion.div
-                  className="relative rounded-2xl bg-card p-6 border border-card-border h-full group"
-                  whileHover={{ y: -6, scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 250 }}
-                >
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="relative">
-                    <Quote className="h-8 w-8 text-accent/20 mb-3" />
-                    <p className="text-white/70 leading-relaxed mb-5 text-sm">&ldquo;{t.quote}&rdquo;</p>
-                    <div className="border-t border-card-border pt-3">
-                      <p className="text-sm font-bold text-white">{t.name}</p>
-                    </div>
                   </div>
                 </motion.div>
               </ScrollReveal>

@@ -47,7 +47,7 @@ export default function ImageCarousel() {
   return (
     <div className="relative w-full overflow-hidden group">
       {/* Image area */}
-      <div className="relative aspect-[21/9] overflow-hidden">
+      <div className="relative aspect-[3/1] overflow-hidden">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={current}
