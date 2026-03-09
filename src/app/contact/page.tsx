@@ -149,7 +149,7 @@ export default function ContactPage() {
                 {[
                   { icon: Mail, title: "Email", detail: "info@automateddesignworks.com", href: "mailto:info@automateddesignworks.com" },
                   { icon: Clock, title: "Response Time", detail: "Within 24 hours", href: null },
-                  { icon: MapPin, title: "Location", detail: "Remote-first team", href: null },
+                  { icon: MapPin, title: "Location", detail: "125 Don Hillock Dr, Unit 15, Aurora, ON", href: null },
                 ].map((item, i) => (
                   <motion.div key={item.title} className="flex gap-3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 + i * 0.1 }}>
                     <motion.div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent" whileHover={{ rotate: 10, scale: 1.1 }}>

@@ -19,7 +19,7 @@ const perks = [
   {
     icon: MapPin,
     title: "Hybrid",
-    text: "Flexible mix of remote and on-site work — collaborate in person when it matters, work from anywhere when it doesn't.",
+    text: "Based in Aurora, ON — flexible mix of remote and on-site work at our 125 Don Hillock Dr location.",
   },
   {
     icon: Rocket,
