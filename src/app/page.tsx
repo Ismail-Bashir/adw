@@ -198,7 +198,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               { href: "/services/cad-automation", icon: Code2, title: "CAD Automation", desc: "Streamline your design process with intelligent CAD workflows. From repetitive drafting tasks to complex model generation, our automation solutions boost accuracy and free up your team to focus on innovation.", glowColor: "rgba(14,165,233,0.12)", iconColor: "#0EA5E9" },
-              { href: "/services/remote-design", icon: Users, title: "Remote Design Group", desc: "Connect with our expert design team from anywhere. Using cutting-edge tools and seamless communication, we deliver precise, efficient CAD solutions — no on-site visits required.", glowColor: "rgba(14,165,233,0.15)", iconColor: "#0EA5E9" },
+              { href: "/services/remote-design", icon: Users, title: "Custom Software Development", desc: "We build tailored automation tools, integrations, and internal software that eliminate manual work and supercharge your engineering workflows.", glowColor: "rgba(14,165,233,0.15)", iconColor: "#0EA5E9" },
             ].map((service, i) => (
               <ScrollReveal key={service.title} delay={i * 0.15} direction={i === 0 ? "left" : "right"}>
                 <Link href={service.href} className="group block h-full">

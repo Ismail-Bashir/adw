@@ -21,7 +21,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { href: "/services/cad-automation", label: "CAD Automation" },
-                { href: "/services/remote-design", label: "Remote Design" },
+                { href: "/services/remote-design", label: "Custom Software" },
                 { href: "/services", label: "All Services" },
               ].map((l) => (
                 <li key={l.href}><Link href={l.href} className="text-sm text-white/30 hover:text-accent transition-colors flex items-center gap-1">{l.label} <ArrowUpRight className="h-3 w-3" /></Link></li>

@@ -12,7 +12,7 @@ export default function Navbar() {
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
     { href: "/services/cad-automation", label: "CAD Automation" },
-    { href: "/services/remote-design", label: "Remote Design" },
+    { href: "/services/remote-design", label: "Custom Software" },
     { href: "/careers", label: "Careers" },
     { href: "/contact", label: "Contact" },
   ];

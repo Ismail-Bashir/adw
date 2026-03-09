@@ -80,10 +80,10 @@ export default function ServicesPage() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent mb-4">
                   <Users className="h-6 w-6" />
                 </div>
-                <h2 className="text-2xl font-bold text-white mb-3">Remote Design Group</h2>
-                <p className="text-base text-muted leading-relaxed mb-4">Enable efficient, off-site design work with tools that streamline communication and keep projects moving.</p>
+                <h2 className="text-2xl font-bold text-white mb-3">Custom Software Development</h2>
+                <p className="text-base text-muted leading-relaxed mb-4">We build tailored automation tools, integrations, and internal software that eliminate manual work and supercharge your engineering workflows.</p>
                 <ul className="space-y-2 mb-6">
-                  {["Expert CAD designers available remotely", "Seamless collaboration with cutting-edge tools", "Multi-configuration layout automation", "Parameter-driven component modeling"].map((item) => (
+                  {["CAD automation scripts and macros", "System integrations (ERP, databases, production tools)", "Desktop applications and SolidWorks add-ins", "Workflow automation and configuration engines"].map((item) => (
                     <li key={item} className="flex items-start gap-2">
                       <ChevronRight className="h-4 w-4 text-accent mt-0.5 shrink-0" />
                       <span className="text-sm text-muted">{item}</span>
